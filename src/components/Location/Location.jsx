@@ -1,7 +1,11 @@
-import React from "react";
+import "./Location.css";
 
 const Location = () => {
-  return <div>Location</div>;
+  return (
+    <div className="locationContainer">
+      <p>Kilburn, London</p>
+    </div>
+  );
 };
 
 export default Location;

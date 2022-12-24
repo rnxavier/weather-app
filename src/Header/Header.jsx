@@ -1,10 +1,15 @@
-import React from "react";
+import "./Header.css";
+import weatherImg from "../images/weather-img.png";
 
 const Header = () => {
   return (
     <div>
-      <div>Yup</div>
-      <img src="" alt="img" />
+      <div className="logoDiv">
+        <strong>&lt;RJForecasts /&gt;</strong>
+      </div>
+      <div className="image-div">
+        <img src={weatherImg} alt="img" />
+      </div>
     </div>
   );
 };
