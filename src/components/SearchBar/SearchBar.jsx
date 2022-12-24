@@ -4,14 +4,17 @@ import { useState, useContext } from "react";
 import { FiSearch } from "react-icons/fi";
 import { LocationContext } from "../../contexts/LocationContext";
 import { TemperatureContext } from "../../contexts/TemperatureContext";
+import { DescriptionContext } from "../../contexts/DescriptionContext";
 import { ImageContext } from "../../contexts/ImageContext";
 
 const SearchBar = () => {
   const { setLocation } = useContext(LocationContext);
   const { setDayOneTemp, setDayTwoTemp, setDayThreeTemp } =
     useContext(TemperatureContext);
-  const { dayOneImg, setDayOneImg, setDayTwoImg, setDayThreeImg } =
+  const { setDayOneImg, setDayTwoImg, setDayThreeImg } =
     useContext(ImageContext);
+  const { setDayOneDescription, setDayTwoDescription, setDayThreeDescription } =
+    useContext(DescriptionContext);
 
   const [locationInput, setLocationInput] = useState();
 
@@ -32,11 +35,14 @@ const SearchBar = () => {
         setDayOneImg(values.forecast.forecastday[0].day.condition.icon);
         setDayTwoImg(values.forecast.forecastday[1].day.condition.icon);
         setDayThreeImg(values.forecast.forecastday[2].day.condition.icon);
+        setDayOneDescription(values.forecast.forecastday[0].day.condition.text);
+        setDayTwoDescription(values.forecast.forecastday[1].day.condition.text);
+        setDayThreeDescription(
+          values.forecast.forecastday[2].day.condition.text
+        );
       })
       .catch((err) => console.log(err));
   };
-
-  console.log(dayOneImg);
 
   const handleSearchClick = () => {
     fetchWeather();
