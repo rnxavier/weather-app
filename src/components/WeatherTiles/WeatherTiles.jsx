@@ -1,56 +1,30 @@
 import "./WeatherTiles.css";
 import placeholderImg from "../../images/weather-img.png";
+import { TemperatureContext } from "../../contexts/TemperatureContext";
+import { useContext } from "react";
 
 const WeatherTiles = () => {
+  const { dayOneTemp, dayTwoTemp, dayThreeTemp } =
+    useContext(TemperatureContext);
+
   return (
     <div className="weatherTileContainer">
       <div className="tileDiv">
         <img src={placeholderImg} alt="" />
-        <p>Max temp</p>
-        <p>Min temp</p>
+        <p>Average Temperature: {dayOneTemp}°C</p>
         <p>Sunday</p>
       </div>
 
       <div className="tileDiv">
         <img src={placeholderImg} alt="" />
-        <p>Max temp</p>
-        <p>Min temp</p>
+        <p>Average Temperature: {dayTwoTemp}°C</p>
         <p>Monday</p>
       </div>
 
       <div className="tileDiv">
         <img src={placeholderImg} alt="" />
-        <p>Max temp</p>
-        <p>Min temp</p>
+        <p>Average Temperature: {dayThreeTemp}°C</p>
         <p>Tuesday</p>
-      </div>
-
-      <div className="tileDiv">
-        <img src={placeholderImg} alt="" />
-        <p>Max temp</p>
-        <p>Min temp</p>
-        <p>Wednesday</p>
-      </div>
-
-      <div className="tileDiv">
-        <img src={placeholderImg} alt="" />
-        <p>Max temp</p>
-        <p>Min temp</p>
-        <p>Thursday</p>
-      </div>
-
-      <div className="tileDiv">
-        <img src={placeholderImg} alt="" />
-        <p>Max temp</p>
-        <p>Min temp</p>
-        <p>Friday</p>
-      </div>
-
-      <div className="tileDiv">
-        <img src={placeholderImg} alt="" />
-        <p>Max temp</p>
-        <p>Min temp</p>
-        <p>Saturday</p>
       </div>
     </div>
   );
