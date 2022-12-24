@@ -1,9 +1,13 @@
 import "./Location.css";
+import { LocationContext } from "../../contexts/LocationContext";
+import { useContext } from "react";
 
 const Location = () => {
+  const { location } = useContext(LocationContext);
+
   return (
     <div className="locationContainer">
-      <p>Kilburn, London</p>
+      <p>{location}</p>
     </div>
   );
 };

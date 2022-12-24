@@ -1,11 +1,27 @@
 .searchBarContainer {
     text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.searchBarContainer svg {
+    width: 40px;
+    height: 40px;
+}
+
+.searchBarContainer button {
+    margin-left: 10px;
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
 }
 
 input {
     border-radius: 8px;
     border-color: #606060;
-    margin-top: 50px;
     width: 40%;
     height: 40px;
+    text-align: center;
+    font-size: 20px;
 }
