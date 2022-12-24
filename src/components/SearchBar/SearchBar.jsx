@@ -31,7 +31,7 @@ const SearchBar = () => {
   return (
     <div className="searchBarContainer">
       <input
-        placeholder="Enter town, city or UK postcode"
+        placeholder="Enter UK city or postcode"
         value={locationInput}
         onChange={(e) => {
           setLocationInput(e.target.value);
