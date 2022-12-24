@@ -3,14 +3,18 @@ import BodyContainer from "./Body/BodyContainer";
 import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
 import { LocationContext } from "./contexts/LocationContext";
-import { useState } from "react";
 import { TemperatureContext } from "./contexts/TemperatureContext";
+import { ImageContext } from "./contexts/ImageContext";
+import { useState } from "react";
 
 function App() {
   const [location, setLocation] = useState();
   const [dayOneTemp, setDayOneTemp] = useState();
   const [dayTwoTemp, setDayTwoTemp] = useState();
   const [dayThreeTemp, setDayThreeTemp] = useState();
+  const [dayOneImg, setDayOneImg] = useState();
+  const [dayTwoImg, setDayTwoImg] = useState();
+  const [dayThreeImg, setDayThreeImg] = useState();
 
   return (
     <LocationContext.Provider value={{ location, setLocation }}>
@@ -24,9 +28,20 @@ function App() {
           setDayThreeTemp,
         }}
       >
-        <Header />
-        <BodyContainer />
-        <Footer />
+        <ImageContext.Provider
+          value={{
+            dayOneImg,
+            setDayOneImg,
+            dayTwoImg,
+            setDayTwoImg,
+            dayThreeImg,
+            setDayThreeImg,
+          }}
+        >
+          <Header />
+          <BodyContainer />
+          <Footer />
+        </ImageContext.Provider>
       </TemperatureContext.Provider>
     </LocationContext.Provider>
   );
