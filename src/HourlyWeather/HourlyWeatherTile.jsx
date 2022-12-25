@@ -1,11 +1,12 @@
 import React from "react";
+import "./TodaysWeather.css";
 
 const HourlyWeatherTile = ({ time, img, temp }) => {
   return (
-    <div style={{ display: "grid", gridTemplateRows: "auto auto auto" }}>
+    <div className="hourlyWeatherTileCard">
       <p>{time}</p>
       <img src={img} alt="" />
-      <p>{temp}</p>
+      <p>{temp} °C</p>
     </div>
   );
 };

@@ -1,5 +1,5 @@
-import React from "react";
 import { useContext } from "react";
+import "./TodaysWeather.css";
 import { HourlyContext } from "../contexts/HourlyContext";
 import HourlyWeatherTile from "./HourlyWeatherTile";
 
@@ -18,10 +18,13 @@ const TodaysWeather = () => {
   }
 
   return (
-    <div>
-      {weatherData.map((item) => (
-        <HourlyWeatherTile time={item.time} img={item.img} temp={item.temp} />
-      ))}
+    <div className="todaysWeatherContainer">
+      <p className="date">Today</p>
+      <div className="mapContainer">
+        {weatherData.map((item) => (
+          <HourlyWeatherTile time={item.time} img={item.img} temp={item.temp} />
+        ))}
+      </div>
     </div>
   );
 };

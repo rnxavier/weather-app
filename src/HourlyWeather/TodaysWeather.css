@@ -1,0 +1,25 @@
+.mapContainer {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
+    text-align: center;
+
+}
+
+.mapContainer img {
+    width: 70%;
+    height: 30%;
+}
+
+.hourlyWeatherTileCard {
+    width: 30%;
+    background: rgb(255, 255, 255, 0.9);
+    padding: 20px 40px;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    margin: 10%;
+}
+
+.date {
+    text-align: center;
+    font-size: 30px;
+}
