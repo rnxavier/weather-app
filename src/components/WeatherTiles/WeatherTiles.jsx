@@ -1,11 +1,12 @@
 import "./WeatherTiles.css";
-
+import { useNavigate } from "react-router-dom";
 import { TemperatureContext } from "../../contexts/TemperatureContext";
 import { ImageContext } from "../../contexts/ImageContext";
 import { DescriptionContext } from "../../contexts/DescriptionContext";
 import { useContext, useState } from "react";
 
 const WeatherTiles = () => {
+  const navigate = useNavigate();
   const date = new Date();
 
   const [today, setToday] = useState(date.toDateString());
@@ -17,6 +18,10 @@ const WeatherTiles = () => {
 
   const { dayOneDescription, dayTwoDescription, dayThreeDescription } =
     useContext(DescriptionContext);
+
+  const handleTodayClick = () => {
+    navigate("/todaysWeather");
+  };
 
   if (dayOneTemp === undefined) {
     return (
@@ -34,7 +39,7 @@ const WeatherTiles = () => {
 
   return (
     <div className="weatherTileContainer">
-      <div className="tileDiv">
+      <div className="tileDiv" onClick={handleTodayClick}>
         <img src={dayOneImg} alt="" />
         <p>Average Temperature: {dayOneTemp}°C</p>
         <p>{dayOneDescription}</p>

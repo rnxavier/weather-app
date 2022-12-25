@@ -1,10 +1,10 @@
 import "./App.css";
 import BodyContainer from "./Body/BodyContainer";
-import Footer from "./Footer/Footer";
-import Header from "./Header/Header";
+import TodaysWeather from "./HourlyWeather/TodaysWeather";
 import { LocationContext } from "./contexts/LocationContext";
 import { TemperatureContext } from "./contexts/TemperatureContext";
 import { ImageContext } from "./contexts/ImageContext";
+import { HourlyContext } from "./contexts/HourlyContext";
 import { useState } from "react";
 import { DescriptionContext } from "./contexts/DescriptionContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -21,6 +21,9 @@ function App() {
   const [dayOneDescription, setDayOneDescription] = useState();
   const [dayTwoDescription, setDayTwoDescription] = useState();
   const [dayThreeDescription, setDayThreeDescription] = useState();
+  const [todaysHourlyTime, setTodaysHourlyTime] = useState();
+  const [todaysHourlyTemp, setTodaysHourlyTemp] = useState();
+  const [todaysHourlyImage, setTodaysHourlyImage] = useState();
 
   return (
     <LocationContext.Provider value={{ location, setLocation }}>
@@ -54,13 +57,25 @@ function App() {
               setDayThreeDescription,
             }}
           >
-            <BrowserRouter>
-              <Routes>
-                <Route element={<Layout />}>
-                  <Route path="/" element={<BodyContainer />} />
-                </Route>
-              </Routes>
-            </BrowserRouter>
+            <HourlyContext.Provider
+              value={{
+                todaysHourlyTime,
+                setTodaysHourlyTime,
+                todaysHourlyTemp,
+                setTodaysHourlyTemp,
+                todaysHourlyImage,
+                setTodaysHourlyImage,
+              }}
+            >
+              <BrowserRouter>
+                <Routes>
+                  <Route element={<Layout />}>
+                    <Route path="/" element={<BodyContainer />} />
+                    <Route path="/todaysWeather" element={<TodaysWeather />} />
+                  </Route>
+                </Routes>
+              </BrowserRouter>
+            </HourlyContext.Provider>
           </DescriptionContext.Provider>
         </ImageContext.Provider>
       </TemperatureContext.Provider>
