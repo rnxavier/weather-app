@@ -42,7 +42,11 @@ const WeatherTiles = () => {
 
   return (
     <div className="weatherTileContainer">
-      <div className="tileDiv" onClick={handleTodayClick}>
+      <div
+        className="tileDiv"
+        onClick={handleTodayClick}
+        style={{ cursor: "pointer" }}
+      >
         <img src={dayOneImg} alt="" />
         <p>Average Temperature: {dayOneTemp}°C</p>
         <p>{dayOneDescription}</p>

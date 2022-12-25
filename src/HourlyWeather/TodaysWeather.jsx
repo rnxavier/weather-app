@@ -1,6 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 import { HourlyContext } from "../contexts/HourlyContext";
+import HourlyWeatherTile from "./HourlyWeatherTile";
 
 const TodaysWeather = () => {
   const { todaysHourlyTemp, todaysHourlyTime, todaysHourlyImage } =
@@ -16,7 +17,13 @@ const TodaysWeather = () => {
     });
   }
 
-  console.log(weatherData);
+  return (
+    <div>
+      {weatherData.map((item) => (
+        <HourlyWeatherTile time={item.time} img={item.img} temp={item.temp} />
+      ))}
+    </div>
+  );
 };
 
 export default TodaysWeather;
