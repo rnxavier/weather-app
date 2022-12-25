@@ -7,6 +7,8 @@ import { TemperatureContext } from "./contexts/TemperatureContext";
 import { ImageContext } from "./contexts/ImageContext";
 import { useState } from "react";
 import { DescriptionContext } from "./contexts/DescriptionContext";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./Layout";
 
 function App() {
   const [location, setLocation] = useState();
@@ -52,9 +54,13 @@ function App() {
               setDayThreeDescription,
             }}
           >
-            <Header />
-            <BodyContainer />
-            <Footer />
+            <BrowserRouter>
+              <Routes>
+                <Route element={<Layout />}>
+                  <Route path="/" element={<BodyContainer />} />
+                </Route>
+              </Routes>
+            </BrowserRouter>
           </DescriptionContext.Provider>
         </ImageContext.Provider>
       </TemperatureContext.Provider>
