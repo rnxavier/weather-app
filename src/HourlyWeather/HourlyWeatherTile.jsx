@@ -1,10 +1,10 @@
 import React from "react";
 
-const HourlyWeatherTile = ({ time, imgSrc, temp }) => {
+const HourlyWeatherTile = ({ time, img, temp }) => {
   return (
     <div>
       <p>{time}</p>
-      <img src={imgSrc} alt="" />
+      <img src={img} alt="" />
       <p>{temp}</p>
     </div>
   );
