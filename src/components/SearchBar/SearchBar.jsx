@@ -23,8 +23,7 @@ const SearchBar = () => {
   let todaysHourlyTimeArray = [];
   let todaysHourlyTempArray = [];
   let todaysHourlyImageArray = [];
-  const { setDayOneDate, setDayTwoDate, setDayThreeDate } =
-    useContext(DateContext);
+  const { setDayTwoDate, setDayThreeDate } = useContext(DateContext);
 
   const [locationInput, setLocationInput] = useState();
 
@@ -67,7 +66,6 @@ const SearchBar = () => {
         setTodaysHourlyTime(todaysHourlyTimeArray);
         setTodaysHourlyTemp(todaysHourlyTempArray);
         setTodaysHourlyImage(todaysHourlyImageArray);
-        setDayOneDate(values.forecast.forecastday[0].date);
         setDayTwoDate(values.forecast.forecastday[1].date);
         setDayThreeDate(values.forecast.forecastday[2].date);
       })
