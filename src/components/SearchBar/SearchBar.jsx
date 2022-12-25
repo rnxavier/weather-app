@@ -7,6 +7,7 @@ import { TemperatureContext } from "../../contexts/TemperatureContext";
 import { DescriptionContext } from "../../contexts/DescriptionContext";
 import { ImageContext } from "../../contexts/ImageContext";
 import { HourlyContext } from "../../contexts/HourlyContext";
+import { DateContext } from "../../contexts/DateContext";
 
 const SearchBar = () => {
   const { setLocation } = useContext(LocationContext);
@@ -22,6 +23,8 @@ const SearchBar = () => {
   let todaysHourlyTimeArray = [];
   let todaysHourlyTempArray = [];
   let todaysHourlyImageArray = [];
+  const { setDayOneDate, setDayTwoDate, setDayThreeDate } =
+    useContext(DateContext);
 
   const [locationInput, setLocationInput] = useState();
 
@@ -64,6 +67,9 @@ const SearchBar = () => {
         setTodaysHourlyTime(todaysHourlyTimeArray);
         setTodaysHourlyTemp(todaysHourlyTempArray);
         setTodaysHourlyImage(todaysHourlyImageArray);
+        setDayOneDate(values.forecast.forecastday[0].date);
+        setDayTwoDate(values.forecast.forecastday[1].date);
+        setDayThreeDate(values.forecast.forecastday[2].date);
       })
       .catch((err) => console.log(err));
   };

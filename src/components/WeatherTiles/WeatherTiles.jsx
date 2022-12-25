@@ -3,13 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { TemperatureContext } from "../../contexts/TemperatureContext";
 import { ImageContext } from "../../contexts/ImageContext";
 import { DescriptionContext } from "../../contexts/DescriptionContext";
-import { useContext, useState } from "react";
+import { useContext } from "react";
+import { DateContext } from "../../contexts/DateContext";
 
 const WeatherTiles = () => {
   const navigate = useNavigate();
-  const date = new Date();
 
-  const [today, setToday] = useState(date.toDateString());
+  const { dayTwoDate, dayThreeDate } = useContext(DateContext);
 
   const { dayOneTemp, dayTwoTemp, dayThreeTemp } =
     useContext(TemperatureContext);
@@ -37,6 +37,9 @@ const WeatherTiles = () => {
     );
   }
 
+  let dayTwo = new Date(dayTwoDate).toString().substring(0, 15);
+  let dayThree = new Date(dayThreeDate).toString().substring(0, 15);
+
   return (
     <div className="weatherTileContainer">
       <div className="tileDiv" onClick={handleTodayClick}>
@@ -53,7 +56,7 @@ const WeatherTiles = () => {
         <p>Average Temperature: {dayTwoTemp}°C</p>
         <p>{dayTwoDescription}</p>
         <p>
-          <strong>Tomorrow</strong>
+          <strong>{dayTwo}</strong>
         </p>
       </div>
 
@@ -62,7 +65,7 @@ const WeatherTiles = () => {
         <p>Average Temperature: {dayThreeTemp}°C</p>
         <p>{dayThreeDescription}</p>
         <p>
-          <strong>Day after tomorrow</strong>
+          <strong>{dayThree}</strong>
         </p>
       </div>
     </div>

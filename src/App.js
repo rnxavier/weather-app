@@ -9,6 +9,7 @@ import { useState } from "react";
 import { DescriptionContext } from "./contexts/DescriptionContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./Layout";
+import { DateContext } from "./contexts/DateContext";
 
 function App() {
   const [location, setLocation] = useState();
@@ -24,6 +25,8 @@ function App() {
   const [todaysHourlyTime, setTodaysHourlyTime] = useState();
   const [todaysHourlyTemp, setTodaysHourlyTemp] = useState();
   const [todaysHourlyImage, setTodaysHourlyImage] = useState();
+  const [dayTwoDate, setDayTwoDate] = useState();
+  const [dayThreeDate, setDayThreeDate] = useState();
 
   return (
     <LocationContext.Provider value={{ location, setLocation }}>
@@ -67,14 +70,26 @@ function App() {
                 setTodaysHourlyImage,
               }}
             >
-              <BrowserRouter>
-                <Routes>
-                  <Route element={<Layout />}>
-                    <Route path="/" element={<BodyContainer />} />
-                    <Route path="/todaysWeather" element={<TodaysWeather />} />
-                  </Route>
-                </Routes>
-              </BrowserRouter>
+              <DateContext.Provider
+                value={{
+                  dayTwoDate,
+                  setDayTwoDate,
+                  dayThreeDate,
+                  setDayThreeDate,
+                }}
+              >
+                <BrowserRouter>
+                  <Routes>
+                    <Route element={<Layout />}>
+                      <Route path="/" element={<BodyContainer />} />
+                      <Route
+                        path="/todaysWeather"
+                        element={<TodaysWeather />}
+                      />
+                    </Route>
+                  </Routes>
+                </BrowserRouter>
+              </DateContext.Provider>
             </HourlyContext.Provider>
           </DescriptionContext.Provider>
         </ImageContext.Provider>
