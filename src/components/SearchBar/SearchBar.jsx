@@ -6,6 +6,7 @@ import { LocationContext } from "../../contexts/LocationContext";
 import { TemperatureContext } from "../../contexts/TemperatureContext";
 import { DescriptionContext } from "../../contexts/DescriptionContext";
 import { ImageContext } from "../../contexts/ImageContext";
+import { DateContext } from "../../contexts/DateContext";
 
 const SearchBar = () => {
   const { setLocation } = useContext(LocationContext);
@@ -15,6 +16,8 @@ const SearchBar = () => {
     useContext(ImageContext);
   const { setDayOneDescription, setDayTwoDescription, setDayThreeDescription } =
     useContext(DescriptionContext);
+  const { setDayOneDate, setDayTwoDate, setDayThreeDate } =
+    useContext(DateContext);
 
   const [locationInput, setLocationInput] = useState();
 
@@ -40,6 +43,9 @@ const SearchBar = () => {
         setDayThreeDescription(
           values.forecast.forecastday[2].day.condition.text
         );
+        setDayOneDate(values.forecast.forecastday[0].date);
+        setDayTwoDate(values.forecast.forecastday[1].date);
+        setDayThreeDate(values.forecast.forecastday[2].date);
       })
       .catch((err) => console.log(err));
   };
