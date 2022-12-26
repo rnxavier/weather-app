@@ -22,17 +22,24 @@ const WeatherTiles = () => {
   const handleTodayClick = () => {
     navigate("/todaysWeather");
   };
+  const handleTomorrowClick = () => {
+    navigate("/tomorrowsWeather");
+  };
+  const handleDayAfterClick = () => {
+    navigate("/dayAfterTomorrowsWeather");
+  };
 
   if (dayOneTemp === undefined) {
     return (
       <div style={{ paddingTop: "7%", paddingBottom: "7%" }}>
-        <h1
+        <p
           style={{
             textAlign: "center",
+            fontSize: "150%",
           }}
         >
-          Search the weather forecast for the next three days
-        </h1>
+          <strong>Search the weather forecast for the next three days</strong>
+        </p>
       </div>
     );
   }
@@ -55,7 +62,11 @@ const WeatherTiles = () => {
         </p>
       </div>
 
-      <div className="tileDiv">
+      <div
+        className="tileDiv"
+        onClick={handleTomorrowClick}
+        style={{ cursor: "pointer" }}
+      >
         <img src={dayTwoImg} alt="" />
         <p>Average Temperature: {dayTwoTemp}°C</p>
         <p>{dayTwoDescription}</p>
@@ -64,7 +75,11 @@ const WeatherTiles = () => {
         </p>
       </div>
 
-      <div className="tileDiv">
+      <div
+        className="tileDiv"
+        onClick={handleDayAfterClick}
+        style={{ cursor: "pointer" }}
+      >
         <img src={dayThreeImg} alt="" />
         <p>Average Temperature: {dayThreeTemp}°C</p>
         <p>{dayThreeDescription}</p>

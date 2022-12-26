@@ -1,6 +1,7 @@
 import "./App.css";
 import BodyContainer from "./Body/BodyContainer";
 import TodaysWeather from "./HourlyWeather/TodaysWeather";
+import TomorrowsWeather from "./HourlyWeather/TomorrowsWeather";
 import { LocationContext } from "./contexts/LocationContext";
 import { TemperatureContext } from "./contexts/TemperatureContext";
 import { ImageContext } from "./contexts/ImageContext";
@@ -10,6 +11,7 @@ import { DescriptionContext } from "./contexts/DescriptionContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./Layout";
 import { DateContext } from "./contexts/DateContext";
+import DayAftersWeather from "./HourlyWeather/DayAftersWeather";
 
 function App() {
   const [location, setLocation] = useState();
@@ -25,6 +27,12 @@ function App() {
   const [todaysHourlyTime, setTodaysHourlyTime] = useState();
   const [todaysHourlyTemp, setTodaysHourlyTemp] = useState();
   const [todaysHourlyImage, setTodaysHourlyImage] = useState();
+  const [tomorrowsHourlyTime, setTomorrowsHourlyTime] = useState();
+  const [tomorrowsHourlyTemp, setTomorrowsHourlyTemp] = useState();
+  const [tomorrowsHourlyImage, setTomorrowsHourlyImage] = useState();
+  const [dayAftersHourlyTime, setDayAftersHourlyTime] = useState();
+  const [dayAftersHourlyTemp, setDayAftersHourlyTemp] = useState();
+  const [dayAftersHourlyImage, setDayAftersHourlyImage] = useState();
   const [dayTwoDate, setDayTwoDate] = useState();
   const [dayThreeDate, setDayThreeDate] = useState();
 
@@ -68,6 +76,18 @@ function App() {
                 setTodaysHourlyTemp,
                 todaysHourlyImage,
                 setTodaysHourlyImage,
+                tomorrowsHourlyTime,
+                setTomorrowsHourlyTime,
+                tomorrowsHourlyTemp,
+                setTomorrowsHourlyTemp,
+                tomorrowsHourlyImage,
+                setTomorrowsHourlyImage,
+                dayAftersHourlyTime,
+                setDayAftersHourlyTime,
+                dayAftersHourlyTemp,
+                setDayAftersHourlyTemp,
+                dayAftersHourlyImage,
+                setDayAftersHourlyImage,
               }}
             >
               <DateContext.Provider
@@ -85,6 +105,14 @@ function App() {
                       <Route
                         path="/todaysWeather"
                         element={<TodaysWeather />}
+                      />
+                      <Route
+                        path="/tomorrowsWeather"
+                        element={<TomorrowsWeather />}
+                      />
+                      <Route
+                        path="/dayAfterTomorrowsWeather"
+                        element={<DayAftersWeather />}
                       />
                     </Route>
                   </Routes>

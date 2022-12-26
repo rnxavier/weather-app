@@ -1,21 +1,24 @@
 import { useContext } from "react";
 import "./TodaysWeather.css";
 import { HourlyContext } from "../contexts/HourlyContext";
-import { LocationContext } from "../contexts/LocationContext";
 import HourlyWeatherTile from "./HourlyWeatherTile";
+import { DateContext } from "../contexts/DateContext";
+import { LocationContext } from "../contexts/LocationContext";
 
-const TodaysWeather = () => {
-  const { todaysHourlyTemp, todaysHourlyTime, todaysHourlyImage } =
+const TomorrowsWeather = () => {
+  const { tomorrowsHourlyTemp, tomorrowsHourlyTime, tomorrowsHourlyImage } =
     useContext(HourlyContext);
+  const { dayTwoDate } = useContext(DateContext);
   const { location } = useContext(LocationContext);
+  let dayTwo = new Date(dayTwoDate).toString().substring(0, 15);
 
   let weatherData = [];
 
-  for (let i = 0; i < todaysHourlyImage.length; i++) {
+  for (let i = 0; i < tomorrowsHourlyImage.length; i++) {
     weatherData.push({
-      time: todaysHourlyTime[i],
-      img: todaysHourlyImage[i],
-      temp: todaysHourlyTemp[i],
+      time: tomorrowsHourlyTime[i],
+      img: tomorrowsHourlyImage[i],
+      temp: tomorrowsHourlyTemp[i],
     });
   }
 
@@ -24,7 +27,7 @@ const TodaysWeather = () => {
       <p className="date">
         <strong>{location}</strong>
       </p>
-      <p className="date">Today</p>
+      <p className="date">{dayTwo}</p>
       <div className="mapContainer">
         {weatherData.map((item) => (
           <HourlyWeatherTile time={item.time} img={item.img} temp={item.temp} />
@@ -34,4 +37,4 @@ const TodaysWeather = () => {
   );
 };
 
-export default TodaysWeather;
+export default TomorrowsWeather;

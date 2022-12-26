@@ -17,12 +17,29 @@ const SearchBar = () => {
     useContext(ImageContext);
   const { setDayOneDescription, setDayTwoDescription, setDayThreeDescription } =
     useContext(DescriptionContext);
-  const { setTodaysHourlyTime, setTodaysHourlyTemp, setTodaysHourlyImage } =
-    useContext(HourlyContext);
+  const {
+    setTodaysHourlyTime,
+    setTodaysHourlyTemp,
+    setTodaysHourlyImage,
+    setTomorrowsHourlyTime,
+    setTomorrowsHourlyTemp,
+    setTomorrowsHourlyImage,
+    setDayAftersHourlyTime,
+    setDayAftersHourlyTemp,
+    setDayAftersHourlyImage,
+  } = useContext(HourlyContext);
 
   let todaysHourlyTimeArray = [];
   let todaysHourlyTempArray = [];
   let todaysHourlyImageArray = [];
+
+  let tomorrowsHourlyTimeArray = [];
+  let tomorrowsHourlyTempArray = [];
+  let tomorrowsHourlyImageArray = [];
+
+  let dayAftersHourlyTimeArray = [];
+  let dayAftersHourlyTempArray = [];
+  let dayAftersHourlyImageArray = [];
   const { setDayTwoDate, setDayThreeDate } = useContext(DateContext);
 
   const [locationInput, setLocationInput] = useState();
@@ -62,10 +79,41 @@ const SearchBar = () => {
               values.forecast.forecastday[0].hour[i].time.length - 5
             )
           );
+          tomorrowsHourlyTempArray.push(
+            values.forecast.forecastday[1].hour[i].temp_c
+          );
+          tomorrowsHourlyImageArray.push(
+            values.forecast.forecastday[1].hour[i].condition.icon
+          );
+          tomorrowsHourlyTimeArray.push(
+            values.forecast.forecastday[1].hour[i].time.substr(
+              values.forecast.forecastday[1].hour[i].time.length - 5
+            )
+          );
+          dayAftersHourlyTempArray.push(
+            values.forecast.forecastday[2].hour[i].temp_c
+          );
+          dayAftersHourlyImageArray.push(
+            values.forecast.forecastday[2].hour[i].condition.icon
+          );
+          dayAftersHourlyTimeArray.push(
+            values.forecast.forecastday[2].hour[i].time.substr(
+              values.forecast.forecastday[2].hour[i].time.length - 5
+            )
+          );
         }
         setTodaysHourlyTime(todaysHourlyTimeArray);
         setTodaysHourlyTemp(todaysHourlyTempArray);
         setTodaysHourlyImage(todaysHourlyImageArray);
+
+        setTomorrowsHourlyTime(tomorrowsHourlyTimeArray);
+        setTomorrowsHourlyTemp(tomorrowsHourlyTempArray);
+        setTomorrowsHourlyImage(tomorrowsHourlyImageArray);
+
+        setDayAftersHourlyTime(dayAftersHourlyTimeArray);
+        setDayAftersHourlyTemp(dayAftersHourlyTempArray);
+        setDayAftersHourlyImage(dayAftersHourlyImageArray);
+
         setDayTwoDate(values.forecast.forecastday[1].date);
         setDayThreeDate(values.forecast.forecastday[2].date);
       })
