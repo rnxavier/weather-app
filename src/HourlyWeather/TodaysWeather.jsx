@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import "./TodaysWeather.css";
+import CarouselComponent from "../components/WeatherTiles/CarouselComponent";
 import { HourlyContext } from "../contexts/HourlyContext";
 import { LocationContext } from "../contexts/LocationContext";
 import HourlyWeatherTile from "./HourlyWeatherTile";
@@ -29,6 +30,9 @@ const TodaysWeather = () => {
         {weatherData.map((item) => (
           <HourlyWeatherTile time={item.time} img={item.img} temp={item.temp} />
         ))}
+      </div>
+      <div className="carouselContainer">
+        <CarouselComponent />
       </div>
     </div>
   );

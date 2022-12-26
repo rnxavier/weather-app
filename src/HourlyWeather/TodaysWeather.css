@@ -4,12 +4,19 @@
     text-align: center;
 }
 
-/* @media screen and (max-width: 990px) {
+.carouselContainer {
+    display: none;
+}
+
+@media screen and (max-width: 1640px) {
     .mapContainer {
         display: none;
-
     }
-} */
+
+    .carouselContainer {
+        display: block;
+    }
+}
 .mapContainer img {
     width: 70%;
     height: 30%;
@@ -23,6 +30,21 @@
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     margin: 10%;
 }
+
+.carouselWeatherTileCard {
+    width: 30%;
+    background: rgb(255, 255, 255, 0.9);
+    padding: 10px 20px;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    margin: 5% auto;
+}
+
+.carouselWeatherTileCard img {
+    width: 60%;
+    height: 35%;
+}
+
 
 .date {
     text-align: center;
