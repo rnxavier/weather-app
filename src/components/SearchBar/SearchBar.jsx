@@ -27,7 +27,7 @@ const SearchBar = () => {
 
   const [locationInput, setLocationInput] = useState();
 
-  const url = `http://api.weatherapi.com/v1/forecast.json?key=${api_key}&q=${locationInput}&days=7`;
+  const url = `https://api.weatherapi.com/v1/forecast.json?key=${api_key}&q=${locationInput}&days=7`;
 
   const fetchWeather = () => {
     fetch(url)
