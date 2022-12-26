@@ -4,6 +4,7 @@ import { HourlyContext } from "../contexts/HourlyContext";
 import HourlyWeatherTile from "./HourlyWeatherTile";
 import { DateContext } from "../contexts/DateContext";
 import { LocationContext } from "../contexts/LocationContext";
+import CarouselComponent from "../components/WeatherTiles/CarouselComponent";
 
 const TomorrowsWeather = () => {
   const { tomorrowsHourlyTemp, tomorrowsHourlyTime, tomorrowsHourlyImage } =
@@ -32,6 +33,9 @@ const TomorrowsWeather = () => {
         {weatherData.map((item) => (
           <HourlyWeatherTile time={item.time} img={item.img} temp={item.temp} />
         ))}
+      </div>
+      <div className="carouselContainer">
+        <CarouselComponent />
       </div>
     </div>
   );
