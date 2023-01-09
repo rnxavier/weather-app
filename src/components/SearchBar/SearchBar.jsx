@@ -128,6 +128,8 @@ const SearchBar = () => {
     <div className="searchBarContainer">
       <input
         placeholder="Enter UK city or postcode"
+        onFocus={(e) => (e.target.placeholder = "")}
+        onBlur={(e) => (e.target.placeholder = "Enter UK city or postcode")}
         value={locationInput}
         onChange={(e) => {
           setLocationInput(e.target.value);
